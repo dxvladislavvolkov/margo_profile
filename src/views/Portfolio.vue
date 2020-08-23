@@ -4,7 +4,7 @@
       <img class="full-img" :src="imgUrl" />
     </Popup>
     <div class="gallary-container">
-        <Preview class="photo" v-for="(image, index) in images" :key="index" :photo="image" @onClick="openFullSize" />
+        <Preview class="photo" v-for="(image, index) in images" :key="index" :photo="image" @onClick="openFullAlbum" />
     </div>
   </div>
 </template>
@@ -15,15 +15,18 @@ import Popup from "../components/Popup"
 const images = [{
   preview: '6.jpg',
   name: 'Name 1',
+  photos: ["6.jpg", "6.jpg", "6.jpg"],
   id: '1'
 }, {
   preview: '6.jpg',
   name: 'Name 2',
-  id: '1'
+  photos: ["6.jpg", "6.jpg", "6.jpg"],
+  id: '2'
 }, {
   preview: '6.jpg',
   name: 'Name 3',
-  id: '1'
+  photos: ["6.jpg", "6.jpg"],
+  id: '3'
 }, {
   preview: '6.jpg',
   name: 'Name 1',
@@ -65,10 +68,9 @@ export default {
     this.listImages = require.context('../assets/images/', false, /\.jpg$/)
   },
   methods: {
-    openFullSize(e) {
+    openFullAlbum(e) {
       /* eslint-disable no-debugger */
-            debugger;
-            console.log(e)
+      this.$router.push({ path: `/album/${e.index}` });
       // this.selectedImage = e.image;
       // this.showPopup = true;
     }

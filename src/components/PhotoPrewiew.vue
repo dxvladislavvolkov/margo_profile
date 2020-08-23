@@ -19,7 +19,9 @@ export default {
     },
     methods: {
         onClick() {
-            this.$emit('onClick', { image: this.$vnode.componentOptions.propsData.photo, index: this.$vnode.key });
+          /* eslint-disable no-debugger */
+          // debugger;
+            this.$emit('onClick', { image: this.$vnode.componentOptions.propsData.photo, index: this.$vnode.componentOptions.propsData.photo.id });
         },
         showDescr() {
             this.show = true;
@@ -33,13 +35,19 @@ export default {
 
 <style scoped>
 img {
-    cursor: pointer;
+  cursor: pointer;
+  transition: 1s;
+}
 
+img:hover {
+  transform: scale(1.1);
 }
 
 .photo-preview {
   width: 322px;
-  padding: 30px 20px 10px;
+  height: 374px;
+  margin: 30px 20px 10px;
+  overflow: hidden;
 }
 
 /* img:hover {
